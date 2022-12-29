@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>留言板</title>
+  </head>
+  <style>
+    body {
+      padding: 80px;
+      font: 16px Helvetica, Arial;
+    }
+    /*上傳頁面設定*/
+    #title{
+      width: 500px;
+      height: 10px;
+    }
+    #date{
+      width: 520px;
+      height: 38px;
+    }
+    textarea {
+      width: 500px;
+      height: 300px;
+    }
+    input[type=text],textarea {
+      border: 1px solid #eee;
+      border-top-color: #ddd;
+      border-left-color: #ddd;
+      border-radius: 2px;
+      padding: 15px;
+      font-size: .8em;
+    }
+   
+    #submit{
+        position:absolute;
+        top:20px;
+        right:68px
+    }
+    #ul{
+        list-style-type:circle;
+        line-height:180%;
+        border: 1px solid black;
+    }
+    #post{
+        width: 500px;
+        height: 300px;
+        background-color: white;
+        border: 2px solid rgb(54, 89, 101); 
+        text-align: center;  
+        position:absolute;  
+        top: 180px;       
+    }
+  </style>
+  <body>
+    <div id ="container">
+        <div align="left" id="post">
+            <h1 class="sayHi">Post</h1>
+            <ul id="ul"></ul>
+        </div>
+        <div align="right">
+            <form >
+                <h2 style="color: gray;">留言板</h3>
+                <input type="text" placeholder="Title" id="title">
+                <p><input type="date" name="date" id="date"></p>
+                <p><textarea placeholder="Contents" name="body"></textarea></p>
+            </form>
+            <button onclick="submit()">發布</button>
+        </div>
+    <script>
+        var txt = document.querySelector("textarea");
+        var title = document.getElementById('title');
+        var ul = document.getElementById('ul');
+        
+
+        function submit()
+        {
+            if(title.value == "" || txt.value == "")
+            { alert("內容不得為空!");}
+            else
+            {
+                var li = document.createElement("li");
+                li.innerHTML = title.value + '\n' +date.value + '\n' + txt.value +'\n' +"<a href = 'javascript:;'>刪除</a>"
+                txt.value = "";
+                title.value = "";
+                ul.append(li);
+
+                ul.insertBefore(li,ul.children[0]);
+                    var as = document.querySelectorAll("a");
+                    for(var i = 0;i<as.length;i++)
+                    {
+                    as[i].onclick = function()
+                    {
+                        ul.removeChild(this.parentNode);
+                    }
+                    }
+                }
+            }
+     </script>
+  </body>
+</html>

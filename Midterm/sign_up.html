@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>註冊用戶</title>
+    </head>
+    <style>
+       *{
+            font-family:微軟正黑體;  
+        }
+        body{
+            background-color: white;
+        }
+        .system_name{
+        /*定位對齊*/
+        position:relative;   
+        margin: auto;
+        top: 100px;
+        text-align:center; 
+        color: rgb(54, 89, 101);
+        }
+        #username,#password,#check_password{
+            width: 200px;
+            height: 20px;
+            margin: 10px;
+            
+        }
+        #sign_up_container/*註冊框架設定*/{ 
+            margin: 50px;
+            padding: 10px;
+            width: 300px;
+            height: 300px;
+            background-color: white;
+            border: 5px solid rgb(54, 89, 101);
+            /*定位對齊*/
+            position:relative;   
+            margin: auto;
+            top: 100px;
+            text-align:center;  
+        }
+    </style>
+    <body>
+        <div class="system_name">
+            <h2>留言板註冊系統</h2>
+        </div>
+        <div align="center" id="sign_up_container">
+            <h3>註冊Sign up</h3>
+            <form>
+                <input id="username" type="text" name="username" placeholder="username"/>
+                <input id="password" type="password" name="password" placeholder="password"/>
+                <input id="check_password" type="password" name="check_password" placeholder="check_password"/>
+            </form>
+            <button class="btn" id="sign_up" onclick="add()">註冊</button>
+            
+            <p class="none">以經有帳戶?
+                <a href="sign_in.html">登入</a>
+            </p>
+        </div>
+        <script>
+            function add()
+            {
+                var User = document.getElementById('username').value;
+                var Passwd = document.getElementById('password').value;
+                var Check_Passwd = document.getElementById('check_password').value;
+                
+                if(User == "" || Passwd == "" || Check_Passwd == "" )
+                { alert("請先填寫完整資訊!"); }
+                else if(Passwd != Check_Passwd)
+                { alert("請確認密碼是否一致!");}
+                else
+                { alert("註冊成功!，登入後即可進入留言板系統!");
+                  location.href = '../Midterm/sign_in.html';
+                }
+            }   
+        </script>
+    </body>
+</html>
